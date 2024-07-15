@@ -19,8 +19,11 @@ class Room(models.Model):
     description=models.TextField(null=True,blank=True)
     updated =models.DateTimeField(auto_now=True)#everytime the model is updated keep track of the time
     created=models.DateTimeField(auto_now_add=True)#when the model is created keep track of the time
+    class Meta:
+        ordering=['-updated','-created'] #sort the rooms by the time they were created in a descending order without - is in the ascending order
     def __str__(self):
         return self.name
+    
     
 class Message(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
