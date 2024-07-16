@@ -33,6 +33,8 @@ class Message(models.Model):
     body=models.TextField()
     updated =models.DateTimeField(auto_now=True)
     created=models.DateTimeField(auto_now_add=True)#when the model is created keep track of the time
+    class Meta:
+        ordering=['-updated','-created'] #sort the rooms by the time they were created in a descending order without - is in the ascending order
     def __str__(self):
         return self.body[0:50]
     
